@@ -16,4 +16,5 @@ public class AttenList {
     private int attenid;
     private int u_id;
 
+
 }
