@@ -10,3 +10,10 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+#定义一个全局的编码格式。(可以使用快捷键 alt)
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      force-request: true
+      enabled: true

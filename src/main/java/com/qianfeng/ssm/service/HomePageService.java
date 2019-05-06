@@ -1,5 +1,6 @@
 package com.qianfeng.ssm.service;
 
+import com.qianfeng.ssm.entity.HeadList;
 import com.qianfeng.ssm.entity.HomePage;
 import com.qianfeng.ssm.vo.JsonBean;
 
@@ -9,4 +10,5 @@ public interface HomePageService {
 
     List<HomePage> queryThreeAll();
 
+    HeadList queryOneAll();
 }
