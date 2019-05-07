@@ -10,11 +10,22 @@ import org.springframework.stereotype.Service;
 public class UserListServiceImpl implements UserListService{
     @Autowired
     private UserListDao userListDao;
-
+    //展示所有个人信息
     @Override
     public UserList showMsg(Integer id) {
       UserList userList =  userListDao.showHeadMsg(id);
         return userList;
     }
 
+    //完善个人信息
+    @Override
+    public void addMsg(UserList userList) {
+        userListDao.addMsg1(userList);
+    }
+
+    //跟新个人信息
+    @Override
+    public void updateUserMsg(Integer id) {
+        userListDao.updateMsg(id);
+    }
 }
