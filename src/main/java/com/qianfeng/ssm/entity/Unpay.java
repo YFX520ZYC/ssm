@@ -9,5 +9,6 @@ public class Unpay {
     private String goodsName;
     private  double price;
     private int u_id;
+    private String goodsphoto;
 
 }

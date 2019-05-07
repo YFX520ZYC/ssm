@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 import java.util.List;
 
-@Api(value = "照片操作",tags = "照片操作")
 @RestController
+@Api(value = "照片制作",tags = "照片制作")
 public class PhotoListController {
     @Autowired
     private PhotoListService photoListService;
     //展示所有照片
-    @ApiOperation(value = "展示所有照片操作",notes = "展示所有照片操作")
+    @ApiOperation(value = "照片列表",notes = "照片列表")
     @GetMapping("photolist/photolist.do")
     public JsonBean findAll(Integer u_id){
        List<PhotoList> list=photoListService.findAll(u_id);
@@ -30,7 +30,7 @@ public class PhotoListController {
     }
 
     //添加照片
-    @ApiOperation(value = "照片添加操作",notes = "照片添加操作")
+    @ApiOperation(value = "添加照片",notes = "添加照片")
     @RequestMapping("photolist/addphotolist.do")
     public JsonBean addPhotoList(String photo, @DateTimeFormat(pattern = "yyyy-MM-dd")Date time, Integer u_id){
         PhotoList photoList = new PhotoList();
@@ -41,7 +41,7 @@ public class PhotoListController {
     }
 
     //删除照片
-    @ApiOperation(value = "照片删除操作",notes = "照片删除操作")
+    @ApiOperation(value = "删除照片",notes = "删除照片")
     @RequestMapping("photolist/deletephotolist.do")
     public JsonBean deletePhotoList(PhotoList photoList){
         photoListService.deletePhotoList(photoList);
