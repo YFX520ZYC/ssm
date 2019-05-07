@@ -4,7 +4,9 @@ package com.qianfeng.ssm.service.impl;
 
 import com.qianfeng.ssm.dao.AttenListDao;
 import com.qianfeng.ssm.entity.AttenList;
+import com.qianfeng.ssm.entity.Attention;
 import com.qianfeng.ssm.service.AttenListService;
+import com.qianfeng.ssm.vo.JsonBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,18 +24,42 @@ public class AttenListServiceImpl implements AttenListService {
         return list;
     }
 
-   /* @Override
-    //关注后展示所有。
-    public List<AttenList> findAll(int u_id, int attenid) {
-        List<AttenList> list = attenListDao.findAll(u_id, attenid);
-        if(list!=null && list.size() > 0){
-           //如果已经关注，再点就是取消关注。
-            attenListDao.deleteById(attenid);
+
+    @Override
+    public JsonBean likeall(Attention attention) {
+
+        Attention atten = attenListDao.queryAll(attention.getAttenid());
+
+        if (atten != null){
+            attenListDao.deleteById(attention.getAttenid());
+            List<AttenList> list = attenListDao.findAll(attention.getU_id());
+            return JsonBean.setOK("取消关注，展示所有",list);
         }else{
-            //如果没有关注，则进行关注。
-            attenListDao.addAtten(AttenList);
+            attenListDao.save(attention);
+            List<AttenList> list = attenListDao.findAll(attention.getU_id());
+            return JsonBean.setOK("添加关注，展示所有",list);
         }
-        List<AttenList> list2 = attenListDao.findAll(u_id);
-        return list2;
+
+    }
+
+
+    /*@Override
+    public List<AttenList> likeall(Attention attention) {
+        Attention atten = attenListDao.queryAll(attention.getAttenid());
+        if (atten != null){
+            attenListDao.deleteById(attention.getAttenid());
+
+            return attenListDao.findAll(attention.getU_id());
+        }else{
+            attenListDao.save(attention);
+            return attenListDao.findAll(attention.getU_id());
+        }
+
     }*/
+
+
+
+
+
+
 }

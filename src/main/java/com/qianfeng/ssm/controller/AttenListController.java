@@ -1,6 +1,7 @@
 package com.qianfeng.ssm.controller;
 
 import com.qianfeng.ssm.entity.AttenList;
+import com.qianfeng.ssm.entity.Attention;
 import com.qianfeng.ssm.service.AttenListService;
 import com.qianfeng.ssm.vo.JsonBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,12 @@ public class AttenListController {
     public JsonBean findAll(int u_id){
         List<AttenList> byAll = attenListService.findByAll(u_id);
        return  JsonBean.setOK("所有关注的展示",byAll) ;
+    }
+
+    @GetMapping("atten/ifatten.do")
+    public JsonBean ifAtten(Attention attention){
+
+        return  attenListService.likeall(attention);
+
     }
 }
