@@ -21,7 +21,6 @@ public class ChengJiuController {
 
     //展示所有成就
     @ApiOperation(value = "展示所有成就操作",notes = "展示所有成就操作")
-
     @GetMapping("chengjiu/chengjiu.do")
     public JsonBean findAll(Integer u_id){
         List<ChengJiu> list = chengJiuService.findAll(u_id);
@@ -30,8 +29,7 @@ public class ChengJiuController {
 
     //添加成就
     @ApiOperation(value = "添加成就操作",notes = "添加成就操作")
-
-    @RequestMapping("chengjiu/addchengjiu.do")
+    @GetMapping("chengjiu/addchengjiu.do")
     public JsonBean addChengJiu(ChengJiu chengJiu){
         chengJiuService.addChengJiu(chengJiu);
         return JsonBean.setOK("添加成功",null);

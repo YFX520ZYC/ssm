@@ -31,7 +31,7 @@ public class GrowupController {
 
     //添加成长记录
     @ApiOperation(value = "添加成长记录操作",notes = "添加成长记录操作")
-    @RequestMapping("growup/addgrowup.do")
+    @GetMapping("growup/addgrowup.do")
     public  JsonBean addGrowup(@DateTimeFormat(pattern = "yyyy-MM-dd")Date data,Integer size,String detail,Double height,Double head,Double weight,Integer u_id){
         Growup growup = new Growup();
         growup.setData(data);
