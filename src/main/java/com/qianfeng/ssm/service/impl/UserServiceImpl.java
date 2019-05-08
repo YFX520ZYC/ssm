@@ -1,15 +1,18 @@
 package com.qianfeng.ssm.service.impl;
 
+
+
 import com.qianfeng.ssm.dao.UserDao;
 import com.qianfeng.ssm.entity.User;
 import com.qianfeng.ssm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.RuntimeErrorException;
 
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
@@ -29,7 +32,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void zhuce(User user) {
-        userDao.addUser(user);
+        User user1 = userDao.findUserByName(user.getName());
+        if(user1 != null){
+            throw  new RuntimeException("用户已经存在");
+        }else{
+            userDao.addUser(user);
+        }
     }
 
 }
