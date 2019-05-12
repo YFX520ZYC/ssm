@@ -26,9 +26,8 @@ public class FootController {
 
     @ApiOperation(value = "收藏展示",notes = "展示所有")
     @GetMapping("food/selectAll.do")
-    public JsonBean selectAll(HttpSession session){
-        User user = (User)session.getAttribute("user");
-        List<Food> list = foodService.findAllfFoot(user.getUid());
+    public JsonBean selectAll(int u_id){
+        List<Food> list = foodService.findAllfFoot(u_id);
         return JsonBean.setOK("展示所有",list);
 
     }

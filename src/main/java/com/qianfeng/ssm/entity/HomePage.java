@@ -10,6 +10,6 @@ public class HomePage {
     private  int id;
     private  String  namelist;
     private  String  photo;
-    private  int size;
+    private  String  size;
 
 }

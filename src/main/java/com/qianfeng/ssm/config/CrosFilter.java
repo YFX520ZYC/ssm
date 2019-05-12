@@ -1,9 +1,10 @@
 package com.qianfeng.ssm.config;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-//@WebFilter("/*")  跨域工具类
+@WebFilter("/*")
 public class CrosFilter implements Filter {
 
     @Override

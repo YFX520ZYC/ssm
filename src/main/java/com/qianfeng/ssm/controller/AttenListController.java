@@ -20,19 +20,14 @@ public class AttenListController {
     @Autowired
     private AttenListService attenListService;
 
-    /**
-     *
-     * @param session
-     * @return
-     */
+
     @ApiOperation(value = "直接进入关注区",notes = "展示所有已经关注的")
     @GetMapping("atten/findall.do")
-    public JsonBean findAll(HttpSession session){
-        User user = (User) session.getAttribute("user");
-
-        List<AttenList> byAll = attenListService.findByAll(user.getUid());
+    public JsonBean findAll(int u_id){
+        List<AttenList> byAll = attenListService.findByAll(u_id);
        return  JsonBean.setOK("所有关注的展示",byAll) ;
     }
+
 
     @ApiOperation(value = "判断是否已经关注",notes = "最终展示的关注的内容")
     @GetMapping("atten/ifatten.do")
